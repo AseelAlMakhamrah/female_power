@@ -52,35 +52,35 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # objects = UserManager()
+    objects = UserManager()
 
 
 
-class Post(models.Model):
-    title=models.CharField(max_length=45)
-    content=models.TextField()
-    user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Post(models.Model):
+#     title=models.CharField(max_length=45)
+#     content=models.TextField()
+#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
-class Comment(models.Model):
-    content=models.TextField()
-    post_comment=models.ForeignKey(User,related_name="p_comments",on_delete=models.CASCADE)
-    user_comment=models.ForeignKey(User,related_name="u_comments",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Comment(models.Model):
+#     content=models.TextField()
+#     post_comment=models.ForeignKey(User,related_name="p_comments",on_delete=models.CASCADE)
+#     user_comment=models.ForeignKey(User,related_name="u_comments",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
 
-class Profile(models.Model):
-    skill=models.CharField(max_length=45)
-    education=models.TextField()
-    experince=models.TextField()
-    links = models.TextField()
-    user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Profile(models.Model):
+#     skill=models.CharField(max_length=45)
+#     education=models.TextField()
+#     experince=models.TextField()
+#     links = models.TextField()
+#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
 
