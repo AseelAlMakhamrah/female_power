@@ -42,3 +42,9 @@ nav{
     height: 600px;
     border-radius: 15px;
 }
+
+#dropdown{
+    border-color: #dbdddf;
+    width: 3%;
+    margin-left: 3%;
+}

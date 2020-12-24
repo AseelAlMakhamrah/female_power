@@ -11,11 +11,11 @@ class UserManager(models.Manager):
         user = User.objects.filter(email = postData['email'])
         
         if len(postData['first_name']) < 5:
-            errors["first_name"] = "First Name should be at least 2 characters"
+            errors["first_name"] = "First Name should be at least 5 characters"
         if not postData['first_name'].isalpha():
             errors["first_name"] = "First Name should be characters only"
         if len(postData['last_name']) < 5:
-            errors["last_name"] = "Last Name should be at least 2 characters"
+            errors["last_name"] = "Last Name should be at least 5 characters"
         if not postData['last_name'].isalpha():
             errors["last_name"] = "Last Name should be characters only"
         if not EMAIL_REGEX.match(postData['email']):
@@ -29,7 +29,7 @@ class UserManager(models.Manager):
         return errors
 
 
-def basic_validator_login(self, postData):
+    def basic_validator_login(self, postData):
         errors = {}
         user = User.objects.filter(email = postData['email'])
         if not EMAIL_REGEX.match(postData['email']):
@@ -52,35 +52,35 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # objects = UserManager()
+    objects = UserManager()
 
 
 
-class Post(models.Model):
-    title=models.CharField(max_length=45)
-    content=models.TextField()
-    user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Post(models.Model):
+#     title=models.CharField(max_length=45)
+#     content=models.TextField()
+#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
-class Comment(models.Model):
-    content=models.TextField()
-    post_comment=models.ForeignKey(User,related_name="p_comments",on_delete=models.CASCADE)
-    user_comment=models.ForeignKey(User,related_name="u_comments",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Comment(models.Model):
+#     content=models.TextField()
+#     post_comment=models.ForeignKey(User,related_name="p_comments",on_delete=models.CASCADE)
+#     user_comment=models.ForeignKey(User,related_name="u_comments",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
 
-class Profile(models.Model):
-    skill=models.CharField(max_length=45)
-    education=models.TextField()
-    experince=models.TextField()
-    links = models.TextField()
-    user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+# class Profile(models.Model):
+#     skill=models.CharField(max_length=45)
+#     education=models.TextField()
+#     experince=models.TextField()
+#     links = models.TextField()
+#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
 
 
 
@@ -120,3 +120,22 @@ def login(log_info):
         if bcrypt.checkpw(log_info['password'].encode(), user_in_data[0].password.encode()):
             return user_in_data[0]
     return False
+
+def logged_user(id):
+    user=User.objects.get(id=id)
+    return user
+
+
+
+
+
+
+
+
+def reg_errors(check_info):
+    errors = User.objects.basic_validator_register(check_info)
+    return errors
+
+def login_errors(check_info):
+    errors = User.objects.basic_validator_login(check_info)
+    return errors
