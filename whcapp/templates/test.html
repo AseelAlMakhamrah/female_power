@@ -1,124 +1,174 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Nawal Test</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
 
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="css/icons.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
+    <link rel="stylesheet" href="static/css/test.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
 </head>
-<body>
+<body>  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background: #2d3246;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/main_img.png'%}" alt="" width="30" height="24" class="d-inline-block align-top">
+                WomanWhoCode
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"style="
+                margin-left: 30%;">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">community</a>
+                    <!-- <div>
+                        <a href="/myaccount/{{request.session.user_id}}">Edit My Account</a> -->
+                        <!-- <a class="btn" href="/logout">Logout</a> 
+                    </div> -->
+                    </li>
+                    <li>
+                    <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </li>
 
 
-	
-
-	<section>
-		<div class="block">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="heading">
-							<h2>Featured Jobs</h2>
-							<span>Leading Employers already using job and talent.</span>
-						</div><!-- Heading -->
-						<div class="job-listings-sec">
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l1.png" alt="" /> </div>
-									<h3><a href="#" title="">Web Designer / Developer</a></h3>
-									<span>Massimo Artemisis</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>Sacramento, California</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is ft">FULL TIME</span>
-							</div><!-- Job -->
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l2.png" alt="" /> </div>
-									<h3><a href="#" title="">Marketing Director</a></h3>
-									<span>Tix Dog</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>Rennes, France</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is pt">PART TIME</span>
-							</div><!-- Job -->
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l3.png" alt="" /> </div>
-									<h3><a href="#" title="">C Developer (Senior) C .Net</a></h3>
-									<span>StarHealth</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>London, United Kingdom</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is ft">FULL TIME</span>
-							</div><!-- Job -->
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l4.png" alt="" /> </div>
-									<h3><a href="#" title="">Application Developer For Android</a></h3>
-									<span>Altes Bank</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>Istanbul, Turkey</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is fl">FREELANCE</span>
-							</div><!-- Job -->
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l5.png" alt="" /> </div>
-									<h3><a href="#" title="">Regional Sales Manager South east Asia</a></h3>
-									<span>Vincent</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>Ajax, Ontario</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is tp">TEMPORARY</span>
-							</div><!-- Job -->
-							<div class="job-listing">
-								<div class="job-title-sec">
-									<div class="c-logo"> <img src="images/resource/l6.png" alt="" /> </div>
-									<h3><a href="#" title="">Social Media and Public Relation Executive </a></h3>
-									<span>MediaLab</span>
-								</div>
-								<span class="job-lctn"><i class="la la-map-marker"></i>Ankara / Turkey</span>
-								<span class="fav-job"><i class="la la-heart-o"></i></span>
-								<span class="job-is ft">FULL TIME</span>
-							</div><!-- Job -->
-						</div>
-					</div>
-					<div class="col-lg-12">
-						<div class="browse-all-cat">
-							<a href="#" title="">Load more listings</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                    <select names="tagging"style ="border-color: #dbdddf; width: 2%; margin-left: 3%;">
+                        <option selected disabled>Choose Tagging</option>
+                        <!-- <option value="" disabled="disabled">:arrow_down:</option> -->
+                        <option value="Option A">Option A</option>
+                        <option value="Option B">Option B</option>
+                        <option value="Option C">Option C</option>
+                    </select>
+                </ul>
+            </div>
+            </div>
+        </nav>
 
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/modernizr.js" type="text/javascript"></script>
-<script src="js/script.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/wow.min.js" type="text/javascript"></script>
-<script src="js/slick.min.js" type="text/javascript"></script>
-<script src="js/parallax.js" type="text/javascript"></script>
-<script src="js/select-chosen.js" type="text/javascript"></script>
+      <div class="container">
+        <div class="row">
+            <h3>Post</h3>
+        </div>
+        <div class="row"style=" width: 214%;">
+        <div class="col-md-6">
+            <div class="widget-area no-padding blank">
+                <div class="status-upload">
+                    <form >
+                        <textarea placeholder="What are you doing right now?" ></textarea>
+                        <!-- <ul>
+                            <a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a>
+                            <a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a>
+                            <a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a>
+                            <a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a>
+                        </ul> -->
+                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+
+
+    
+
+    <div class="container">
+        <h2 class="text-center">Comments</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="" class="img img-rounded img-fluid"/>
+                        <p class="text-secondary text-center">15 Minutes Ago</p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left" href=""><strong>ayat</strong></a>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+    
+                       </p>
+                       <div class="clearfix"></div>
+                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <p>
+                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                       </p>
+                    </div>
+                </div>
+                    <div class="card card-inner">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="" class="img img-rounded img-fluid"/>
+                                    <p class="text-secondary text-center">15 Minutes Ago</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <p><a href=""><strong>ghada</strong></a></p>
+                                    <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>
+                                        <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
+                                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                   </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+      <div class="container">
+          <div class="row row-30">
+          <div class="col-md-4 col-xl-5">
+          <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+              <p>We inspire Palestinian women to excel in technology careers.</p>
+              
+              <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>. </span><span>All Rights Reserved.</span></p>
+          </div>
+          </div>
+          <div class="col-md-4">
+              <h5>Contacts</h5>
+              <dl class="contact-list">
+                  <dt>Address:</dt>
+                  <dd>Ramallah, Palestine</dd>
+              </dl>
+              <dl class="contact-list">
+                  <dt>email:</dt>
+                  <dd><a href="mailto:#">info@wwcode.com</a></dd>
+              </dl>
+              
+          </div>
+          <div class="col-md-4 col-xl-3">
+              <h5>Links</h5>
+              <ul class="nav-list">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Work with us</a></li>
+                  <li><a href="#">Contacts</a></li>
+                  
+              </ul>
+          </div>
+          </div>
+          </div>
+          <div class="row no-gutters social-container">
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+      </div>
+  </footer>
 
 </body>
 </html>
-
