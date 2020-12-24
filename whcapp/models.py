@@ -74,13 +74,18 @@ class User(models.Model):
 
 
 # class Profile(models.Model):
-#     skill=models.CharField(max_length=45)
-#     education=models.TextField()
-#     experince=models.TextField()
-#     links = models.TextField()
-#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
+    # user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
+    # skills = models.TextField()
+    # education = models.TextField()
+    # education_from = models.CharField(max_length=45)
+    # education_to = models.CharField(max_length=45)
+    # experience = models.TextField()
+    # experience_from = models.CharField(max_length=45)
+    # experience_to = models.CharField(max_length=45)
+    # links = models.TextField()
+    # video_url = models.TextField()
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
 
 
 

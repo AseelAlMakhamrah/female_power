@@ -4,8 +4,9 @@ from . import models
 
 
 def index(request):
+    if 'user_id' in request.session:
+        return redirect( '/allpostcommunity')
     return render(request,'welcom.html')
-
 
 
 def allpostcommunity(request):
@@ -41,7 +42,7 @@ def login(request):
             return redirect('/')
         else:
             user = models.login(request.POST)
-            if user is not None:
+            if user:
                 if 'user_id' not in request.session:
                     request.session['user_id'] = user.id
                     request.session['first_name'] = user.first_name
@@ -49,9 +50,25 @@ def login(request):
                     return redirect('/allpostcommunity')
     return redirect('/')
 
+
 def logout(request):
     if 'user_id' in request.session:
         del request.session['user_id']
         del request.session['first_name']
         del request.session['last_name']
     return redirect('/')
+
+# def profile_edit(request):
+#     return render(request,"profile.html")
+
+# def profile_view(request):
+#     return render(request,"profile_view_mode.html")
+# def show(request,id):
+#     context ={
+#         "shows": Show.objects.get(id = id)
+#     }
+#     return render(request, "showdet.html", context)
+
+
+def show(request):
+    return render(request, "community.html")
