@@ -13,7 +13,7 @@
 
 <body>
 
-   <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Female Power</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,75 +60,76 @@
         </div>
     </nav>
 
+    <form action="/save_profile_changes" action="post">
+        <div class="profile-content">
+            {% load static %}
+            <center>
+                <img src="{% static 'img/avatar.jpg' %}" class="img-fluid img-thumbnail" alt="profile image">
 
-    <div class="profile-content">
-        {% load static %}
-        <center>
-            <img src="{% static 'img/avatar.jpg' %}" class="img-fluid img-thumbnail" alt="profile image">
-
-            <br />
-            <label id="open-for-work">Open For Work</label>
-            <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0"
-                    checked>
-                <label class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                </label>
-            </div>
-        </center>
-        <div class="fields-view-mode">
-            <label for="name">Name</label>
-            <output>your name</output>
-            <br />
-            <label for="email">E-mail</label>
-            <output>your email</output>
-
-            <br />
-            <label for="mobile">Mobile Phone</label>
-            <output>your mobile</output>
-            <br />
-            <label for="countries">Countries</label>
-            <output>Country</output>
-            <br />
-            <label for="education">Education</label>
-
-            <output>Education</output>
-            <br />
-            <label class="from" for="edu-from">from:</label>
-            <output>Education from</output>
-            <label class="to" for="edu-to">to:</label>
-            <output>Education to</output>
-
-
-            <div>
-                <label for="experience">Experience</label>
-
-                <output>Experience</output>
                 <br />
-                <label class="from" for="exp-from">from:</label>
-                <output>Experience from</output>
-                <label class="to" for="exp-to">to:</label>
-                <output>Experience to</output>
-            </div>
-            <div class="form-group">
-                <label for="links">Links</label>
-                <output>Links</output>
-            </div>
-            
-            <label for="video-demo-url">Video Demo</label>
-            <br/>
-            <video width="320" height="240" controls>
-                <source src="movie.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-              Your browser does not support the video tag.
-              </video>
-        </div>
-        <center>
-            <button type="button" class="btn btn-primary">Save Changes</button>
-        </center>
-    </div>
+                <label id="open-for-work">Open For Work</label>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                        tabindex="0" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </center>
+            <div class="fields-view-mode">
+                <label for="name">Name</label>
+                <output>{{name}}</output>
+                <br />
+                <label for="email">E-mail</label>
+                <output>{{email}}</output>
 
+                <br />
+                <label for="mobile">Mobile Phone</label>
+                <output>{{mobile}}</output>
+                <br />
+                <label for="country">Countries</label>
+                <output>Country</output>
+                <br />
+                <label for="education">Education</label>
+                <output>{{education}}</output>
+                <br />
+                <label class="from" for="edu-from">from:</label>
+                <output>{{edu_from}}</output>
+                <label class="to" for="edu-to">to:</label>
+                <output>{{edu_to}}</output>
+
+
+                <div>
+                    <label for="experience">Experience</label>
+
+                    <output>{{experience}}</output>
+                    <br />
+                    <label class="from" for="exp-from">from:</label>
+                    <output>{{exp_from}}</output>
+                    <label class="to" for="exp-to">to:</label>
+                    <output>{{exp_to}}</output>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <output>{{skills}}</output>
+                </div>
+
+                <div class="form-group">
+                    <label for="links">Links</label>
+                    <output>{{links}}</output>
+                </div>
+                <div class="form-group">
+                    <label for="video-demo-url">Video Demo</label>
+                    <output name="video-demo-url">{{video_url}}</output>
+                </div>
+            </div>
+            <center>
+                <button type="button" class="btn btn-primary">Edit Profile</button>
+            </center>
+        </div>
+    </form>
 </body>
 
 </html>

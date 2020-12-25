@@ -54,7 +54,19 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
+    skills = models.TextField()
+    education = models.TextField()
+    education_from = models.CharField(max_length=45)
+    education_to = models.CharField(max_length=45)
+    experience = models.TextField()
+    experience_from = models.CharField(max_length=45)
+    experience_to = models.CharField(max_length=45)
+    links = models.TextField()
+    video_url = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 # class Post(models.Model):
 #     title=models.CharField(max_length=45)
@@ -88,19 +100,6 @@ class User(models.Model):
     # updated_at = models.DateTimeField(auto_now=True)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #form the view
 def register(reg_info):
     first_name = reg_info['first_name']
@@ -118,7 +117,6 @@ def register(reg_info):
     return False
 
 
-
 def login(log_info):
     user_in_data = User.objects.filter(email=log_info['email'])
     if len(user_in_data):
@@ -131,12 +129,6 @@ def logged_user(id):
     return user
 
 
-
-
-
-
-
-
 def reg_errors(check_info):
     errors = User.objects.basic_validator_register(check_info)
     return errors
@@ -144,3 +136,4 @@ def reg_errors(check_info):
 def login_errors(check_info):
     errors = User.objects.basic_validator_login(check_info)
     return errors
+

@@ -13,7 +13,7 @@
 
 <body>
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Female Power</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,7 +39,7 @@
 
         </div>
     </nav>
- -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -48,16 +48,19 @@
                 WHC
             </a>
         </div>
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button> -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#section3">LOG IN </a>
-                </li>
-            </ul>
-        </div>
+    </button> 
+    
+        <form action="/save_profile_changes" method="post">
+            {% csrf_token %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section3">LOG IN </a>
+                    </li>
+                </ul>
+            </div>
     </nav>
 
     <div class="profile-content">
@@ -78,7 +81,7 @@
         </center>
         <div class="fields">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{name}}">
             <br />
             <label for="email">E-mail</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
@@ -87,7 +90,7 @@
             <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number">
             <br />
             <label for="countries">Countries</label>
-            <select>
+            <select name="country">
                 <option>select one</option>
                 <option>country1</option>
                 <option>country2</option>
@@ -116,6 +119,11 @@
                 <input type="date" id="exp-to" name="exp-to">
             </div>
             <div class="form-group">
+                <label for="skills">Skills</label>
+                <input type="text" class="form-control" id="skills" name="skills"
+                    placeholder="Add your skills">
+            </div>
+            <div class="form-group">
                 <label for="links">Links</label>
                 <input type="text" class="form-control" id="links" name="links"
                     placeholder="Add links to your linkedin, facebook, portfolio....etc ">
@@ -125,10 +133,10 @@
                 placeholder="Add the link to your demo video">
         </div>
         <center>
-            <button type="button" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
         </center>
     </div>
-
+    </form>
 </body>
 
 </html>
