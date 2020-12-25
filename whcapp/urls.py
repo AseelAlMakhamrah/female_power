@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile_edit', views.profile_edit),
     path('profile_view', views.profile_view),
     path('save_profile_changes', views.save_profile_changes),
+    path('update_profile', views.update_profile),
     
     
 
