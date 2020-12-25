@@ -100,6 +100,9 @@ def save_profile_changes(request):
     current_user = User.objects.get(id = request.session['user_id'])
     current_profile = Profile.objects.filter(user= current_user)
     if current_profile.count() == 0:
+        current_user.first_name = name
+        current_user.email = email
+        current_user.save()
         profile = Profile.objects.create(
         user = current_user,
         mobile = mobile,
@@ -128,6 +131,7 @@ def save_profile_changes(request):
         current_user.profile.skills = request.POST['skills']
         current_user.profile.links = request.POST['links']
         current_user.profile.video_url = request.POST['video-demo-url']
+        current_user.save()
         current_user.profile.save()
         
        
