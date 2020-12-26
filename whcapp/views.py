@@ -85,7 +85,15 @@ def profile_edit(request):
     }
     return render(request,"profile.html", context)
 
-def profile_view(request):
+def profile_view(request, id):
+    try:
+        current_user = User.objects.get(id = request.session['user_id'])
+        current_profile = Profile.objects.filter(user= current_user)
+        #print("profile -------->"+current_profile.count())
+        if current_profile is not None:
+            return redirect("profile_edit")
+    except:
+        print("exist")
     return render(request,"profile_view_mode.html")
 
 def save_profile_changes(request):

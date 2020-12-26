@@ -10,12 +10,12 @@ class UserManager(models.Manager):
         errors = {}
         user = User.objects.filter(email = postData['email'])
         
-        if len(postData['first_name']) < 5:
-            errors["first_name"] = "First Name should be at least 5 characters"
+        if len(postData['first_name']) < 2:
+            errors["first_name"] = "First Name should be at least 2 characters"
         if not postData['first_name'].isalpha():
             errors["first_name"] = "First Name should be characters only"
-        if len(postData['last_name']) < 5:
-            errors["last_name"] = "Last Name should be at least 5 characters"
+        if len(postData['last_name']) < 2:
+            errors["last_name"] = "Last Name should be at least 2 characters"
         if not postData['last_name'].isalpha():
             errors["last_name"] = "Last Name should be characters only"
         if not EMAIL_REGEX.match(postData['email']):
@@ -90,14 +90,12 @@ class Post(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     objects = PostManager()
 
-
 class Comment(models.Model):
     content=models.TextField()
     user = models.ForeignKey(User,related_name ='u_comments',on_delete = models.CASCADE)
     post = models.ForeignKey(Post,related_name ='m_comments',on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-
 
 #form the view
 def register(reg_info):
@@ -114,7 +112,6 @@ def register(reg_info):
             user_info = User.objects.last()
             return user_info
     return False
-
 
 def login(log_info):
     user_in_data = User.objects.filter(email=log_info['email'])
@@ -139,7 +136,6 @@ def addpost(post_info,user_id):
     post = Post.objects.last()
     return post
 
-
 def addcomment(comment_info,user_id):
     user=User.objects.get(id=user_id)
     post=Post.objects.get(id=comment_info['post_id'])
@@ -148,15 +144,9 @@ def addcomment(comment_info,user_id):
     comment=Post.objects.last()
     return comment
 
-
 def get_post(id):
     post= Post.objects.get(id=id)
     return post
-
-
-
-
-
 
 def reg_errors(check_info):
     errors = User.objects.basic_validator_register(check_info)
