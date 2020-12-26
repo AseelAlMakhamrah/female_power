@@ -4,7 +4,56 @@
 
 body {
   background: #fafafa;
+  font-family: sans-serif;
 }
+
+
+nav.navbar.navbar-expand-lg.navbar-dark {
+  background-color: #f73366 !important;
+}
+
+a.nav-link {
+  font-weight: 600 !important;
+  font-size: 1.5em !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #2e86c1 !important;
+}
+
+.nav-link {
+  margin-left: 769px !important;
+}
+
+img.d-inline-block.align-top {
+  padding: 20px !important;
+}
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  position: fixed !important;
+  z-index: 2000 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .widget-area.blank {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
