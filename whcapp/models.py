@@ -53,6 +53,8 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    def __str__(self):
+        return self.first_name + " " + self.last_name
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
@@ -69,6 +71,9 @@ class Profile(models.Model):
     country = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "Profile of " + self.user.first_name + " " + self.user.last_name
 
 # class Post(models.Model):
 #     title=models.CharField(max_length=45)
