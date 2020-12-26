@@ -11,7 +11,13 @@ def index(request):
 
 def allpostcommunity(request):
     if 'user_id' in request.session:
-        return render(request,'allpostcommunity.html')
+        context = {
+            'first_name':request.session['first_name'],
+            'last_name':request.session['last_name'],
+            'posts':models.all_posts(),
+            'looged_user':models.logged_user(request.session['user_id'])
+        }
+        return render(request,'allpostcommunity.html',context)
     return redirect('/')   
 
 
@@ -58,8 +64,20 @@ def logout(request):
         del request.session['last_name']
     return redirect('/')
 
-def show(request):
-    return render(request, "community.html")
+
+def addpost(request):
+    if request.method =='POST':
+        errors = models.posts_errors(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/')
+        else:
+            post = models.addpost(request.POST,request.session['user_id'])
+            if post is not None:
+                return redirect('/allpostcommunity')
+    return redirect('/allpostcommunity')
+
 
 def profile_edit(request):
     context = {
@@ -67,7 +85,15 @@ def profile_edit(request):
     }
     return render(request,"profile.html", context)
 
-def profile_view(request):
+def profile_view(request, id):
+    try:
+        current_user = User.objects.get(id = request.session['user_id'])
+        current_profile = Profile.objects.filter(user= current_user)
+        #print("profile -------->"+current_profile.count())
+        if current_profile is not None:
+            return redirect("profile_edit")
+    except:
+        print("exist")
     return render(request,"profile_view_mode.html")
 
 def save_profile_changes(request):
@@ -138,8 +164,6 @@ def save_profile_changes(request):
         current_user.save()
         current_user.profile.save()
         
-       
-        
     return render(request,"profile_view_mode.html", context)
 
 def update_profile(request):
@@ -161,4 +185,29 @@ def update_profile(request):
             "video_url" : current_user.profile.video_url
     } 
     return render(request,"profile.html", context)
+
+
+def showposts(request,id):
+    context = {
+        'post':models.get_post(id),
+        'post_data':models.all_posts(),
+    }
+    return render(request, "community.html",context)
+
+def community(request):
+    context = {
+        'user':User.objects.get(id=request.session['user_id']),
+    }
+    return render (request,'community.html',context)
+
+def addcomment(request,id):
+    if request.method == 'POST':
+        if 'user_id' in request.session:
+            comment = models.addcomment(request.POST,id)
+            if comment is not None:
+                return redirect('/posts/' + str(id))
+    return redirect('/community')
+
+
+
 

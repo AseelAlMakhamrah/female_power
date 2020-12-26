@@ -10,12 +10,12 @@ class UserManager(models.Manager):
         errors = {}
         user = User.objects.filter(email = postData['email'])
         
-        if len(postData['first_name']) < 5:
-            errors["first_name"] = "First Name should be at least 5 characters"
+        if len(postData['first_name']) < 2:
+            errors["first_name"] = "First Name should be at least 2 characters"
         if not postData['first_name'].isalpha():
             errors["first_name"] = "First Name should be characters only"
-        if len(postData['last_name']) < 5:
-            errors["last_name"] = "Last Name should be at least 5 characters"
+        if len(postData['last_name']) < 2:
+            errors["last_name"] = "Last Name should be at least 2 characters"
         if not postData['last_name'].isalpha():
             errors["last_name"] = "Last Name should be characters only"
         if not EMAIL_REGEX.match(postData['email']):
@@ -43,7 +43,14 @@ class UserManager(models.Manager):
         return errors
 
 
-
+class PostManager(models.Manager):
+    def posts_basic_validator(self, postData):
+        errors = {}
+        if len(postData['title']) < 2:
+            errors["title"] = "Title should be at least 2 characters"
+        if len(postData['content']) < 10:
+            errors["content"] = "Content should be at least 10 characters"
+        return errors
 
 class User(models.Model):
     first_name = models.CharField(max_length=45)
@@ -75,37 +82,20 @@ class Profile(models.Model):
     def __str__(self):
         return "Profile of " + self.user.first_name + " " + self.user.last_name
 
-# class Post(models.Model):
-#     title=models.CharField(max_length=45)
-#     content=models.TextField()
-#     user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
+class Post(models.Model):
+    title=models.CharField(max_length=45)
+    content=models.TextField()
+    user_post=models.ForeignKey(User,related_name="posts",on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    objects = PostManager()
 
-
-# class Comment(models.Model):
-#     content=models.TextField()
-#     post_comment=models.ForeignKey(User,related_name="p_comments",on_delete=models.CASCADE)
-#     user_comment=models.ForeignKey(User,related_name="u_comments",on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
-
-
-
-# class Profile(models.Model):
-    # user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
-    # skills = models.TextField()
-    # education = models.TextField()
-    # education_from = models.CharField(max_length=45)
-    # education_to = models.CharField(max_length=45)
-    # experience = models.TextField()
-    # experience_from = models.CharField(max_length=45)
-    # experience_to = models.CharField(max_length=45)
-    # links = models.TextField()
-    # video_url = models.TextField()
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # updated_at = models.DateTimeField(auto_now=True)
-
+class Comment(models.Model):
+    content=models.TextField()
+    user = models.ForeignKey(User,related_name ='u_comments',on_delete = models.CASCADE)
+    post = models.ForeignKey(Post,related_name ='m_comments',on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
 
 #form the view
 def register(reg_info):
@@ -123,7 +113,6 @@ def register(reg_info):
             return user_info
     return False
 
-
 def login(log_info):
     user_in_data = User.objects.filter(email=log_info['email'])
     if len(user_in_data):
@@ -131,10 +120,33 @@ def login(log_info):
             return user_in_data[0]
     return False
 
+def all_posts():
+    posts = Post.objects.all()
+    return posts
+
 def logged_user(id):
     user=User.objects.get(id=id)
     return user
 
+def addpost(post_info,user_id):
+    title = post_info['title']
+    content = post_info['content']
+    user = User.objects.get(id=user_id)
+    Post.objects.create(title=title,content=content,user_post=user)
+    post = Post.objects.last()
+    return post
+
+def addcomment(comment_info,user_id):
+    user=User.objects.get(id=user_id)
+    post=Post.objects.get(id=comment_info['post_id'])
+    comment = comment_info['comment']
+    Comment.objects.create(content=comment,user=user,post=post)
+    comment=Post.objects.last()
+    return comment
+
+def get_post(id):
+    post= Post.objects.get(id=id)
+    return post
 
 def reg_errors(check_info):
     errors = User.objects.basic_validator_register(check_info)
@@ -142,5 +154,9 @@ def reg_errors(check_info):
 
 def login_errors(check_info):
     errors = User.objects.basic_validator_login(check_info)
+    return errors
+
+def posts_errors(check_info):
+    errors = Post.objects.posts_basic_validator(check_info)
     return errors
 
