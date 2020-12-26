@@ -55,13 +55,32 @@ class PostManager(models.Manager):
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
-    email = models.CharField(max_length=45)
+    email = models.TextField()
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    def __str__(self):
+        return self.first_name + " " + self.last_name
 
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
+    skills = models.TextField()
+    education = models.TextField()
+    education_from = models.CharField(max_length=45)
+    education_to = models.CharField(max_length=45)
+    experience = models.TextField()
+    experience_from = models.CharField(max_length=45)
+    experience_to = models.CharField(max_length=45)
+    links = models.TextField()
+    video_url = models.TextField()
+    mobile = models.CharField(max_length=45)
+    country = models.CharField(max_length=45)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return "Profile of " + self.user.first_name + " " + self.user.last_name
 
 class Post(models.Model):
     title=models.CharField(max_length=45)
@@ -80,35 +99,6 @@ class Comment(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
 
 
-
-# class Profile(models.Model):
-    # user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
-    # skills = models.TextField()
-    # education = models.TextField()
-    # education_from = models.CharField(max_length=45)
-    # education_to = models.CharField(max_length=45)
-    # experience = models.TextField()
-    # experience_from = models.CharField(max_length=45)
-    # experience_to = models.CharField(max_length=45)
-    # links = models.TextField()
-    # video_url = models.TextField()
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # updated_at = models.DateTimeField(auto_now=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #form the view
 def register(reg_info):
     first_name = reg_info['first_name']
@@ -124,7 +114,6 @@ def register(reg_info):
             user_info = User.objects.last()
             return user_info
     return False
-
 
 
 def login(log_info):
@@ -180,3 +169,4 @@ def login_errors(check_info):
 def posts_errors(check_info):
     errors = Post.objects.posts_basic_validator(check_info)
     return errors
+

@@ -7,12 +7,15 @@ urlpatterns = [
     path('login', views.login),
     path('logout', views.logout),
     path('register',views.register),
-    path('posts/<int:id>/', views.show),
-    path('test', views.test),
+    path('posts/<int:id>/', views.showposts),
     path('addpost',views.addpost),
     path('posts/<int:id>/addcomment', views.addcomment),
-#     path('profile_edit', views.profile_edit),
-#     path('profile_view', views.profile_view),
+    # path('show', views.show),
+    path('profile_edit', views.profile_edit),
+    path('profile_view', views.profile_view),
+    path('save_profile_changes', views.save_profile_changes),
+    path('update_profile', views.update_profile),
+
     
     
 
