@@ -10,6 +10,10 @@ nav.navbar.navbar-expand-lg.navbar-dark {
     background-color: #f73366 !important;
 }
 
+.btn-primary {
+    background-color: #f73366 !important;
+}
+
 a.nav-link {
     font-weight: 600 !important;
     font-size: 1.5em !important;
@@ -28,6 +32,7 @@ img.d-inline-block.align-top {
 }
 
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    width: -webkit-fill-available;
     position: fixed !important;
     z-index: 2000 !important;
 }

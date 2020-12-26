@@ -1,4 +1,4 @@
-img {
+.profile-image {
     width: 10%;
     height: 10%;
 }
@@ -29,7 +29,8 @@ img {
 .onoffswitch-inner:before {
     content: "ON";
     padding-left: 10px;
-    background-color: #34A7C1; color: #FFFFFF;
+    background-color: #f73366;
+    color: #FFFFFF;
 }
 .onoffswitch-inner:after {
     content: "OFF";
@@ -92,6 +93,7 @@ video {
 
 .profile-content {
     margin: 1% !important;
+    padding-top: 10%;
 }
 
 /* input#edu-from,
