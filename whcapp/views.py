@@ -62,12 +62,16 @@ def show(request):
     return render(request, "community.html")
 
 def profile_edit(request):
-    return render(request,"profile.html")
+    context = {
+            "country" : "select one",
+    }
+    return render(request,"profile.html", context)
 
 def profile_view(request):
     return render(request,"profile_view_mode.html")
 
 def save_profile_changes(request):
+    #print("work is "+request.POST['onoffswitch'])
     name = request.POST['name']
     email = request.POST['email']
     mobile = request.POST['mobile']

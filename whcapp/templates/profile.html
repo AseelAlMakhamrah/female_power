@@ -13,7 +13,7 @@
 
 <body>
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Female Power</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -48,10 +48,11 @@
                 WHC
             </a>
         </div>
-       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> 
-    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <form action="/save_profile_changes" method="post">
             {% csrf_token %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -71,8 +72,8 @@
             <br />
             <label id="open-for-work">Open For Work</label>
             <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0"
-                    checked>
+                <input value="{{work}}" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                    id="myonoffswitch" tabindex="0" checked>
                 <label class="onoffswitch-label" for="myonoffswitch">
                     <span class="onoffswitch-inner"></span>
                     <span class="onoffswitch-switch"></span>
@@ -81,40 +82,46 @@
         </center>
         <div class="fields">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{name}}">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                value="{{name}}">
             <br />
             <label for="email">E-mail</label>
-            <input type="text" value="{{email}}" class="form-control" id="email" name="email" placeholder="Enter your email">
+            <input type="text" value="{{email}}" class="form-control" id="email" name="email"
+                placeholder="Enter your email">
             <br />
             <label for="mobile">Mobile Phone</label>
-            <input type="text" value="{{mobile}}" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number">
+            <input type="text" value="{{mobile}}" class="form-control" id="mobile" name="mobile"
+                placeholder="Enter your mobile number">
             <br />
             <label for="countries">Countries</label>
-            <select name="country">
-                <option>select one</option>
+            <select id="country" name="country">
+                <option>{{country}}</option>
                 <option value="country1">country1</option>
                 <option value="country2">country2</option>
                 <option value="country3">country3</option>
+
             </select>
             <br />
             <label for="education">Education</label>
+            <input type="text" value="{{education}}" class="form-control" id="education" name="education"
+                placeholder="Enter your education">
+            <div class="form-group">
+                <label class="from" for="edu-from">from:</label>
+                <input value="{{edu_from}}" type="date" id="edu-from" name="edu-from">
+            <br/>
+                <label class="to" for="edu-to">to:</label>
+                <input value="{{edu_to}}" type="date" id="edu-to" name="edu-to">
+            </div>
 
-            <input type="text" value="{{education}}" class="form-control" id="education" name="education" placeholder="Enter your education">
-            <br />
-            <label class="from" for="edu-from">from:</label>
-            <input value="{{edu_from}}" type="date" id="edu-from" name="edu-from">
-            <label class="to" for="edu-to">to:</label>
-            <input value="{{edu_to}}" type="date" id="edu-to" name="edu-to">
-
-
-            <div>
+            <div class="form-group">
                 <label for="experience">Experience</label>
-
                 <input value="{{experience}}" type="text" class="form-control" id="experience" name="experience"
                     placeholder="Enter your experience">
-                <br />
+            </div>
+                    <div class="form-group">
                 <label class="from" for="exp-from">from:</label>
-                <input  value="{{exp_from}}" type="date" id="exp-from" name="exp-from">
+                <input value="{{exp_from}}" type="date" id="exp-from" name="exp-from">
+               </div> <div class="form-group">
                 <label class="to" for="exp-to">to:</label>
                 <input value="{{exp_to}}" type="date" id="exp-to" name="exp-to">
             </div>

@@ -54,7 +54,8 @@ img {
 
 /* end of on off switch */
 
-input:not(#search), select {
+input:not(#search),
+select {
     margin: 1% !important;
     display: inline-block !important;
     width: 15% !important;
@@ -76,7 +77,11 @@ input:not(#search), select {
 label:not(.onoffswitch-label):not(.from):not(.to) {
     width: 10%;
 }
-.fields label:not(.onoffswitch-label):not(.to):not(#open-for-work),
+.from,.to {
+    width: 5%;
+}
+
+.fields label:not(.onoffswitch-label):not(#open-for-work),
 video {
     margin-left: 37%;
 }
@@ -89,12 +94,12 @@ video {
     margin: 1% !important;
 }
 
-input#edu-from,
+/* input#edu-from,
 input#edu-to,
 input#exp-from,
 input#exp-to {
     width: 9.9% !important;
-}
+} */
 
 #search, .search-button {
     height: 38px;
