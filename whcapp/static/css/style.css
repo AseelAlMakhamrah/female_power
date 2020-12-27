@@ -31,8 +31,12 @@ img.d-inline-block.align-top {
     padding: 20px !important;
 }
 
+<<<<<<< HEAD
+nav.navbar.navbar-expand-lg.navbar-dark {
+=======
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
     width: -webkit-fill-available;
+>>>>>>> fdf4c504865a63cd835b31ebf8127d8229c60a7b
     position: fixed !important;
     z-index: 2000 !important;
 }
@@ -42,7 +46,7 @@ body {
 }
 
 #section1 {
-    height: 600px;
+    height: 800px;
     border-radius: 15px;
 }
 
@@ -88,8 +92,11 @@ button {
         margin-bottom: 23px;    }
 
 .btn-primary{
-    background:rgb(226,23,118) ;
+    background:  #f73366;
 }
 .form-control{
-    border-color: rgb(226,23,118);
+    border-color:  #f73366;
+}
+form {
+    margin-top: 18%;
 }

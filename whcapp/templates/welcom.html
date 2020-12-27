@@ -54,10 +54,10 @@ You can explore hundreds of careers to find out what different jobs are like and
         <div class="main" id="section2">
             <div class="container-fluid row">
                 <div class="col-1"></div>
-                <div class="col">
-                    <h3>Register</h3>
+                <div class="col" >
+                    
                     <form action="/register" method="POST">
-                        {% csrf_token %}
+                        <h3>Register </h3>{% csrf_token %}
                         <div class = "form-group row">
                             <label for="first_name" class="col-3 col-form-label"> First Name: </label>
                             <input id="first_name" type  = "text" name = "first_name" class="form-control col-9">
@@ -99,9 +99,9 @@ You can explore hundreds of careers to find out what different jobs are like and
             <div class="container-fluid row">
                 <div class="col-1"></div>
                 <div class="col">
-                    <h3>Signin</h3>
+                    
                     <form action="/login" method="POST">
-                        {% csrf_token %}
+                        <h3>Signin</h3>{% csrf_token %}
                         <div class = "form-group row">
                             <label for="email" class="col-3 col-form-label"> Email: </label>
                             <input id="email" type  = "email" name = "email" class="form-control col-9">
