@@ -7,67 +7,31 @@
     <title>Profile</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/profile_pages_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Female Power</a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        View Mode
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">User Mode</a>
-                        <a class="dropdown-item" href="#">Admin Mode</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="search-box">
-                <input id="search" type="search" placeholder="Search" aria-label="Search">
-                <button class="search-button" type="submit">Search</button>
-            </div>
-
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{% static 'img/main_img.png'%}" alt="" width="30" height="24"
-                    class="d-inline-block align-top">
-                WHC
+                <img src="{% static 'img/logo.png'%}" alt="" width="150" height="100" class="d-inline-block align-center">
+                <span>WomanWhoCode</span>
             </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#section3">LOG IN </a>
+                </li>
+            </ul>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <form action="/save_profile_changes" method="post">
-            {% csrf_token %}
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#section3">LOG IN </a>
-                    </li>
-                </ul>
-            </div>
     </nav>
 
     <div class="profile-content">
         {% load static %}
         <center>
-            <img src="{% static 'img/avatar.jpg' %}" class="img-fluid img-thumbnail" alt="profile image">
+            <img src="{% static 'img/avatar.jpg' %}" class="img-fluid img-thumbnail profile-image" alt="profile image">
 
             <br />
             <label id="open-for-work">Open For Work</label>

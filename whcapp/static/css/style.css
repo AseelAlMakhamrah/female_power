@@ -10,6 +10,10 @@ nav.navbar.navbar-expand-lg.navbar-dark {
     background-color: #f73366 !important;
 }
 
+.btn-primary {
+    background-color: #f73366 !important;
+}
+
 a.nav-link {
     font-weight: 600 !important;
     font-size: 1.5em !important;
@@ -27,7 +31,12 @@ img.d-inline-block.align-top {
     padding: 20px !important;
 }
 
+<<<<<<< HEAD
 nav.navbar.navbar-expand-lg.navbar-dark {
+=======
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    width: -webkit-fill-available;
+>>>>>>> fdf4c504865a63cd835b31ebf8127d8229c60a7b
     position: fixed !important;
     z-index: 2000 !important;
 }
