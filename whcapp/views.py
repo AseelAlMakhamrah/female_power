@@ -167,24 +167,27 @@ def save_profile_changes(request):
     return render(request,"profile_view_mode.html", context)
 
 def update_profile(request):
-    current_user = User.objects.get(id = request.session['user_id'])
-    #current_profile = Profile.objects.get(user_id= request.session['user_id'])
-    context = {
-            "name" : current_user.first_name,
-            "email" : current_user.email,
-            "mobile" : current_user.profile.mobile,
-            "country" : current_user.profile.country,
-            "education" : current_user.profile.education,
-            "edu_from" : current_user.profile.education_from,
-            "edu_to" : current_user.profile.education_to,
-            "experience" : current_user.profile.experience,
-            "exp_from" : current_user.profile.experience_from,
-            "exp_to" : current_user.profile.experience_to,
-            "skills" : current_user.profile.skills,
-            "links" : current_user.profile.links,
-            "video_url" : current_user.profile.video_url
-    } 
-    return render(request,"profile.html", context)
+    try:
+        current_user = User.objects.get(id = request.session['user_id'])
+        #current_profile = Profile.objects.get(user_id= request.session['user_id'])
+        context = {
+                "name" : current_user.first_name,
+                "email" : current_user.email,
+                "mobile" : current_user.profile.mobile,
+                "country" : current_user.profile.country,
+                "education" : current_user.profile.education,
+                "edu_from" : current_user.profile.education_from,
+                "edu_to" : current_user.profile.education_to,
+                "experience" : current_user.profile.experience,
+                "exp_from" : current_user.profile.experience_from,
+                "exp_to" : current_user.profile.experience_to,
+                "skills" : current_user.profile.skills,
+                "links" : current_user.profile.links,
+                "video_url" : current_user.profile.video_url
+        } 
+        return render(request,"profile.html", context)
+    except:
+        return redirect("/profile_edit")
 
 
 def showposts(request,id):
