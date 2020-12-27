@@ -28,6 +28,8 @@
         </div>
     </nav>
 
+    <form action="/save_profile_changes" method="post">
+        {% csrf_token %}
     <div class="profile-content">
         {% load static %}
         <center>
